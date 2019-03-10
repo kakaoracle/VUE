@@ -148,18 +148,18 @@
     v-for:循环一个数组
     demo:
 ```html
-                <ul id="example-1">   <!--ul是有序列表ol是无序列表-->
-                    <li v-for="item in items">    
-                        {{ item.message }}  
-                    </li> 
-                </ul>
-                var example1 = new Vue({  
+    <ul id="example-1">   <!--ul是有序列表ol是无序列表-->
+        <li v-for="item in items">    
+            {{ item.message }}  
+        </li> 
+    </ul>
+     var example1 = new Vue({  
                 el: '#example-1',  
                 data: {    
                 items: [      
                 {message: 'foo' },      
                 {message: 'Bar' }    ]  
-                }})
+    }})
 ```
       其中:of可以替代in作为分隔符
 ### v-model处理输入框输入
@@ -304,6 +304,7 @@ v-model:绑定一个模型,script中已经为模型赋值,输入框优先级大�
      动态Props示例:   
 ### 过滤器filter
         过滤某类数据用新的格式展示
+```js
         <div id="myApp">
                <p>{{message}}</p>
                <p>{{message | toupper}}</p>
@@ -325,9 +326,11 @@ v-model:绑定一个模型,script中已经为模型赋值,输入框优先级大�
                         }
                     }
                 })
-            </script>filter
+            </script>
+```
 ### 计算属性computed
             处理元数据(加减乘除),便于二次开发
+```js
           <div id="myApp">
                  价格是:{{prtice}},含税价格是:{{priceInTax}}
              </div>
@@ -343,36 +346,37 @@ v-model:绑定一个模型,script中已经为模型赋值,输入框优先级大�
                           }
                       }
                   })
-              </script>            
+              </script>       
+```     
 ### 观察某属性watch
 ```html
-            <div id="myApp">
-                   价格是:{{price}},含税价格是:{{priceInTax}}<br>
-                   <button @click="btnClick(50)">加价50</button>
-               </div>
-                <script>
-                    var myApp = new Vue({
-                        el:"#myApp",
-                        data:{
-                            price:300
-                        },
-                        computed:{
-                            priceInTax:function(){
-                                return this.price*1.08
-                            }
-                        },
-                        watch:{
-                                price:function(newVal,oldVal){
-                                    this.priceInTax = Math.round(this.price*1.08)/*相当于监视,发生变化就执行computed的功能*/
-                                }
-                        },
-                        methods:{
-                            btnClick:function(val){
-                                this.price += val;
-                            }
-                        }
-                    })
-                </script>
+<div id="myApp">
+    价格是:{{price}},含税价格是:{{priceInTax}}<br>
+    <button @click="btnClick(50)">加价50</button>
+</div>
+    <script>
+        var myApp = new Vue({
+            el:"#myApp",
+            data:{
+                price:300
+            },
+            computed:{
+                priceInTax:function(){
+                    return this.price*1.08
+                }
+            },
+            watch:{
+                    price:function(newVal,oldVal){
+                        this.priceInTax = Math.round(this.price*1.08)/*相当于监视,发生变化就执行computed的功能*/
+                    }
+            },
+            methods:{
+                btnClick:function(val){
+                    this.price += val;
+                }
+            }
+        })
+    </script>
 ```
 ### 设置计算属性
 ```html
@@ -588,52 +592,52 @@ body{
 			.number:规范输入内容为数值,输入不正确则返回空
 			.trim:去掉空格
 ```html
-				<body>
-			<div id="myApp">
-					<div>
-							<label for="username">用户:</label>
-							<input type="text" id="username" v-model.lazy="username" @change="checkUsername"><!--如果发生变化就触发checkUsername事件-->
-							<span v-if="checkUsernameOK">可注册</span><!--如果checkUsernameOK为true,就显示可注册-->
-					</div>
-					<div>
-							<label for="age">年龄:</label>
-							<input v-model.number="age"  id="age" type="number">
-					</div>
-					<div>
-							<label for="content">个人见解:</label>
-							<textarea id="content" v-model.trim="content" cols="55" rows="8"></textarea>
-					</div>
-					<h4>信息区</h4>
-					<p>姓名:{{username}}</p>
-					<p>年龄:{{age}}</p>
-					<p><pre>个人见解:{{content}}</pre></p>
-			</div>
-			<script>
-					var myApp = new Vue({
-							el:"#myApp",
-							data:{
-									username:"",
-									checkUsernameOk:false,
-									age:"",
-									content:""
-							},
-							methods:{
-									checkUsername:function () {
-																	if (this.username.length >0){
-																			this.checkUsernameOK = true;
-																	}else {
-																			this.checkUsernameOK=false;
-																	}
-									}
-							}
-					})
-			</script>
-	</body>
+<body>
+    <div id="myApp">
+            <div>
+                    <label for="username">用户:</label>
+                    <input type="text" id="username" v-model.lazy="username" @change="checkUsername"><!--如果发生变化就触发checkUsername事件-->
+                    <span v-if="checkUsernameOK">可注册</span><!--如果checkUsernameOK为true,就显示可注册-->
+            </div>
+            <div>
+                    <label for="age">年龄:</label>
+                    <input v-model.number="age"  id="age" type="number">
+            </div>
+            <div>
+                    <label for="content">个人见解:</label>
+                    <textarea id="content" v-model.trim="content" cols="55" rows="8"></textarea>
+            </div>
+            <h4>信息区</h4>
+            <p>姓名:{{username}}</p>
+            <p>年龄:{{age}}</p>
+            <p><pre>个人见解:{{content}}</pre></p>
+    </div>
+    <script>
+            var myApp = new Vue({
+                    el:"#myApp",
+                    data:{
+                            username:"",
+                            checkUsernameOk:false,
+                            age:"",
+                            content:""
+                    },
+                    methods:{
+                            checkUsername:function () {
+                                                            if (this.username.length >0){
+                                                                    this.checkUsernameOK = true;
+                                                            }else {
+                                                                    this.checkUsernameOK=false;
+                                                            }
+                            }
+                    }
+            })
+    </script>
+</body>
 ```
 ### 表行组件
   错误示范:
 ```html
-	 <body>
+<body>
     <div id="myApp">
             <h1>游戏列表:</h1>
             <table boder="1">
@@ -670,83 +674,83 @@ body{
 ### 组件中的数据函数,为自定义的组件添加变量
      用数据属性会报错:
 ```html
-		<body>
-			<div id="myApp">
-							<div>今天的天气是:<today-weather/></div>
-			</div>
-			<script>
-					Vue.component('today-weather',{
-							template:'<strong>{{weatherdata}}</strong>',
-							data: {
-									weatherdata:'雨加雪'
-							}
-							})
-					var myApp = new Vue({
-							el:'#myApp',
-							data:{},
-						 methods:{}
-					})
-			</script>
-		</body>	
+<body>
+    <div id="myApp">
+                    <div>今天的天气是:<today-weather/></div>
+    </div>
+    <script>
+            Vue.component('today-weather',{
+                    template:'<strong>{{weatherdata}}</strong>',
+                    data: {
+                            weatherdata:'雨加雪'
+                    }
+                    })
+            var myApp = new Vue({
+                    el:'#myApp',
+                    data:{},
+                    methods:{}
+            })
+    </script>
+</body>	
 ```
 	data是一个属性而不是一个对象,正确的是:
 ```html
-		<body>
-			<div id="myApp">
-							<div>今天的天气是:<today-weather/></div>
-			</div>
-			<script>
-					Vue.component('today-weather',{
-							template:'<strong>{{weatherdata}}</strong>',
-							data: function () {
-									return {
-											weatherdata: '雨加雪'
-									};
-							}
-							})
-					var myApp = new Vue({
-							el:'#myApp',
-							data:{},
-						 methods:{}
-					})
-			</script>
-		</body>
+<body>
+    <div id="myApp">
+                    <div>今天的天气是:<today-weather/></div>
+    </div>
+    <script>
+            Vue.component('today-weather',{
+                    template:'<strong>{{weatherdata}}</strong>',
+                    data: function () {
+                            return {
+                                    weatherdata: '雨加雪'
+                            };
+                    }
+                    })
+            var myApp = new Vue({
+                    el:'#myApp',
+                    data:{},
+                    methods:{}
+            })
+    </script>
+</body>
 ```
 ### 组件-传递数据,可接收参数的组件
 ```html
-	<body>
-		<div id="myApp">
-			<h1>成绩:</h1>
-			<test-result :score="50"></test-result>
-			<test-result :score="100"></test-result>
-		</div>
-		<script>
-			Vue.component('test-result',{
-				props:['score'],
-				template:"<div><strong>{{score}}分,{{testResult}}</strong></div>",
-				computed:{
-					testResult:function(){
-						var strResult = "";
-						if (this.score<60){
-							strResult="不及格"
-						} else{
-							strResult="优秀"
-						}
-							return strResult;
-					}
-				}
-			});
-			var myApp = new Vue({
-				el:'#myApp',
-				data:{},
-				methods:{}
-			})
-		</script>
-	</body>
+<body>
+    <div id="myApp">
+        <h1>成绩:</h1>
+        <test-result :score="50"></test-result>
+        <test-result :score="100"></test-result>
+    </div>
+    <script>
+        Vue.component('test-result',{
+            props:['score'],
+            template:"<div><strong>{{score}}分,{{testResult}}</strong></div>",
+            computed:{
+                testResult:function(){
+                    var strResult = "";
+                    if (this.score<60){
+                        strResult="不及格"
+                    } else{
+                        strResult="优秀"
+                    }
+                        return strResult;
+                }
+            }
+        });
+        var myApp = new Vue({
+            el:'#myApp',
+            data:{},
+            methods:{}
+        })
+    </script>
+</body>
 ```
 ### 组件-参数验证  
 ```html
-	<body>
+<body>
     <div id="myApp">
         <h1>身世之谜</h1>
          <show-member-info name="koma" :age="25" :detail="{address:'earth',language:'世界语'}"></show-member-info>
@@ -790,7 +794,7 @@ body{
 ### 组件之事件传递v-on与$emit
     侦听组件事件,当组件触发事件后进行事件处理
 ```html
-   <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -840,7 +844,7 @@ body{
 ### 组件之slot插槽
 可以将父组件的内容显示在子组件中
 ```html
-    <body>
+<body>
    <div id="myApp">
        <say-to pname="koma">你的视频太差了</say-to>
        <say-to pname="mike">你千万不要学koma</say-to>
@@ -1037,7 +1041,7 @@ export default {
 
 >>src目录下的App.vue是组件的主入口
 >>main.js是js的主入口
-### P7组件的结构
+### P7 组件的结构
 VUE命令行开发模式为我们带来的组件开发方式
 - 组件是什么?
 HelloWorld.vue是一个组件,也就是后缀为vue的文件就是组件,这就是一个名这HelloWorld的组件
@@ -1077,7 +1081,7 @@ HelloWorld.vue是一个组件,也就是后缀为vue的文件就是组件,这就�
     </style>
 ```
 
-### P8webpack模板工程的结构
+### P8 webpack模板工程的结构
 * build目录
     webpack设置文件
 * config目录
