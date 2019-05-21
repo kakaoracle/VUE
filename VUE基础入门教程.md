@@ -66,6 +66,7 @@ vue -V(只有vue的版本确认用大写的V)
     开始编译打包工程,结果生成在dist目录下
 
 9. src目录是平时开发所在的目录  
+
 #### vue-webpack工程中引入Bootstrap4框架
 - bootstrap的作用是让按钮更加的漂亮
 - 命令行:
@@ -1212,10 +1213,10 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
-//这是唯一的入口组件.注册了router,表明以后所有的子组件都能访问这个router7
+//这是唯一的入口组件.注册了router,表明以后所有的子组件都能访问这个router了
 ```
 
-src/routerindex.js中:
+src/router/index.js中:
 ```js
 import Router from 'vue-router'
 export default new Router({

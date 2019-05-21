@@ -1,21 +1,11 @@
-# myweb
+# VUE
+myweb文件夹是webpack包下的入门和进阶课程的总和,视频地址是:
+https://www.bilibili.com/video/av24419291/?p=16
+官网：
+http://komavideo.com
 
-> A Vue.js project
+优酷：
+http://i.youku.com/komavideo
 
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+Youtube：
+https://www.youtube.com/c/小马视频
