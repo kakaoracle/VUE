@@ -67,6 +67,11 @@ vue -V(只有vue的版本确认用大写的V)
 
 9. src目录是平时开发所在的目录  
 
+10. npm run install和npm run dev和npm run build
+install是工程代码写完后,添加依赖
+dev是本地启动进行测试
+build是生成静态html文件
+
 #### vue-webpack工程中引入Bootstrap4框架
 - bootstrap的作用是让按钮更加的漂亮
 - 命令行:
