@@ -11,6 +11,32 @@ export const postRequest = (url,params) =>0
 v-bind:缩写是:,单向绑定,一般用于颜色或者验证规则
 v-on:缩写是@
 v-model:双向绑定,只用于表单,即默认从model向view显示,但是view变化后会自动传到model中
+4. 关于new Vue那点事
+index.html:首页,vue实例化的标签是替换的index.html而不是app.vue,app.vue中的#标签完全可以删掉
+
+index.js主要负责路由功能,  
+
+app.vue:主要用来生成第一层路由结点<router-view/>,并且这一层是空白层,其中div的id为app完全可以去掉,假如删掉app.vue文件,那就心须在比如登录页面加上<router-view/>才行,这样的话,索引路由前就会有一个根层,再索引到登录页面,就会产生重叠效果  
+
+main.js是程序主入口,通常用来new vue对象和加载大型插件比如router,注意引入插件需要用vue.use(router),这里引入的是router实例,而不是router模块,即router是在index中vue.use(路由组件)然后实例化一个routerexport,引入index中export的router
+```js
+new Vue({
+  el: '#app',
+  router,
+  template: '<App/>',
+  components: {App}
+})
+
+```
+其中el指的是index.html中将要被组件替换掉的#app节点
+router全称为router:router,只不过import时命名也为router,才省略
+components:值可以为多个,引入的组件名
+template:值为components中的一个,但是要用<>包裹起来(出于语法需要)
+
+5. vue的路由
+一是声明式,类似于<a href>
+二是编码式,router.push(),其实声明式最后也后编译成js中的代码
+
 
 
 #### 命令行安装
@@ -43,16 +69,6 @@ vue -V(只有vue的版本确认用大写的V)
            list:  
            build:  
            help:  
-2.  vue list
-
-  Available official templates:
-
-  ★  browserify - A full-featured Browserify + vueify setup with hot-reload, linting & unit testing.  
-  ★  browserify-simple - A simple Browserify + vueify setup for quick prototyping.  
-  ★  pwa - PWA template for vue-cli based on the webpack template  
-  ★  simple - The simplest possible Vue setup in a single HTML file  
-  ★  webpack - A full-featured Webpack + vue-loader setup with hot reload, linting, testing & css extraction.  
-  ★  webpack-simple - A simple Webpack + vue-loader setup for quick prototyping.  
 3. 官方是六个模板工程,但是一般都用webpack模板 
     地址是:[url]http://vuejs-templates.github.io/webpack/
 4. 开始建立一个新的工程
