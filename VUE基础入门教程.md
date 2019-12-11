@@ -39,6 +39,9 @@ template:值为components中的一个,但是要用<>包裹起来(出于语法需
 
 
 
+
+
+
 #### 命令行安装
 - 关于node.js,npm
 node.js相当于是java中的jdk,是编译工具
